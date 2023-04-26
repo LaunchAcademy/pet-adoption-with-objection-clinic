@@ -54,6 +54,7 @@ const SpeciesShow = (props) => {
         }
       } else {
         const responseBody = await response.json()
+        debugger
         const updatedPets = species.pets.concat(responseBody.pet)
         setErrors([])
         setSpecies({ ...species, pets: updatedPets })
