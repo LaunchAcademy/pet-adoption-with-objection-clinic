@@ -3,9 +3,11 @@ import Species from "../../models/Species.js"
 class SpeciesSeeder {
   static async seed() {
     const speciesData = [
-      { name: "cat" },
-      { name: "dog" },
-      { name: "rabbit" },
+      { name: "Cat" },
+      { name: "Dog" },
+      { name: "Rabbit" },
+      { name: "Rat" },
+      { name: "Snek" },
     ]
 
     for (const speciesInfo of speciesData) {

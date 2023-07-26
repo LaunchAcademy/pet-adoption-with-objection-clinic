@@ -16,19 +16,12 @@ class Species extends Model {
   }
 
   static get relationMappings() {
-    const Pet = require("./Pet")
+    // const Pet = require("./Pet")
 
-    return {
-      pets: {
-        relation: Model.HasManyRelation,
-        modelClass: Pet,
-        join: {
-          from: "species.id",
-          to: "pets.speciesId"
-        }
-      }
-    }
+    // return {}
   }
+
+ 
 }
 
 module.exports = Species

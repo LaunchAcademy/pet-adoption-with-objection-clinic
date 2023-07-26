@@ -6,7 +6,7 @@ import petSpeciesRouter from "./petSpeciesRouter.js"
 
 const speciesRouter = new express.Router()
 
-speciesRouter.use("/:speciesId/pets", petSpeciesRouter)
+// speciesRouter.use("/:speciesId/pets", petSpeciesRouter)
 
 speciesRouter.get("/", async (req, res) => {
   try {
@@ -20,15 +20,9 @@ speciesRouter.get("/", async (req, res) => {
 
 speciesRouter.get("/:id", async (req, res) => {
   try {
-    const id = req.params.id
-    // console.log(id)
 
-    const species = await Species.query().findById(id)
-    // console.log(species)
 
-    species.pets = await species.$relatedQuery("pets")
-
-    return res.status(200).json({ species: species })
+    return res.status(200).json({ species: {} })
   } catch (err) {
     console.error(err)
     return res.status(500),json({ errors: err })

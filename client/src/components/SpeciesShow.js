@@ -71,12 +71,10 @@ const SpeciesShow = (props) => {
   return (
     <div>
       <h1>{species.name}</h1>
+        <NewPetForm postPet={postPet} />
       <h4>Pets:</h4>
       {petTiles}
-      <div>
-        <ErrorList errors={errors} />
-        <NewPetForm postPet={postPet} />
-      </div>
+      <ErrorList errors={errors} />
     </div>
   )
 }
