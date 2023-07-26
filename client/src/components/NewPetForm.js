@@ -5,7 +5,7 @@ const NewPetForm = ({ postPet }) => {
     name: "",
     available: "",
     weight: "",
-    age: ""
+    estimatedAge: ""
   })
 
   const handleInputChange = event => {
@@ -79,9 +79,9 @@ const NewPetForm = ({ postPet }) => {
           Estimated Age:
           <input
             type="text"
-            name="age"
+            name="estimatedAge"
             onChange={handleInputChange}
-            value={newPet.age}
+            value={newPet.estimatedAge}
           />
         </label>
 

@@ -18,9 +18,18 @@ class Pet extends Model {
   }
 
   static get relationMappings() {
-    // const Species = require("./Species")
+    const Species = require("./Species")
 
-    // return {}
+    return {
+      species: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: Species,
+        join: {
+          from: "pets.speciesId",
+          to: "species.id"
+        }
+      }
+    }
   }
 }
 

@@ -7,9 +7,18 @@ import cleanUserInput from "../../../services/cleanUserInput.js"
 const petSpeciesRouter = new express.Router({ mergeParams: true })
 
 petSpeciesRouter.post("/", async (req, res) => {
+  console.log(req.params)
+  console.log(req.body)
+
+  const cleanedPetData = cleanUserInput(req.body)
+  cleanedPetData.speciesId = req.params.speciesId
+
   try {
 
-    return res.status(201).json({ pet: {} })
+    const newPet = await Pet.query().insertAndFetch(cleanedPetData)
+    
+
+    return res.status(201).json({ pet: newPet })
   } catch (err) {
     console.log(err)
     //model validation error handling
