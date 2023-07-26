@@ -16,3 +16,9 @@ After adding any new section of code/ new method/ etc, how can we test that it w
 - `console.log` the `error` thrown from the router to see what the error actually is (seeing `500 Internal Server Error` is not really helpful)
 - Run queries in the `yarn console` to see better error messages when trying to access data in the database, or add new records
 - Test ALL associations you define, in both directions
+
+```no-highlight
+createdb pet_adoptions_development
+yarn install
+yarn run dev
+```

@@ -54,6 +54,7 @@ const SpeciesShow = (props) => {
         }
       } else {
         const responseBody = await response.json()
+        debugger
         const updatedPets = species.pets.concat(responseBody.pet)
         setErrors([])
         setSpecies({ ...species, pets: updatedPets })
@@ -70,12 +71,10 @@ const SpeciesShow = (props) => {
   return (
     <div>
       <h1>{species.name}</h1>
+        <NewPetForm postPet={postPet} />
       <h4>Pets:</h4>
       {petTiles}
-      <div>
-        <ErrorList errors={errors} />
-        <NewPetForm postPet={postPet} />
-      </div>
+      <ErrorList errors={errors} />
     </div>
   )
 }
