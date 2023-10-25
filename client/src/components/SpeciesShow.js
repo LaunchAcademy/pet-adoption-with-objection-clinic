@@ -53,11 +53,8 @@ const SpeciesShow = (props) => {
           throw error
         }
       } else {
-        const responseBody = await response.json()
-        debugger
-        const updatedPets = species.pets.concat(responseBody.pet)
-        setErrors([])
-        setSpecies({ ...species, pets: updatedPets })
+        // handle successful post
+   
       }
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
