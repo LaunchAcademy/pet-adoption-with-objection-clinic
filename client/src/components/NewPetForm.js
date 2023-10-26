@@ -32,7 +32,7 @@ const NewPetForm = ({ postPet }) => {
 
   return (
     <div className="callout">
-      <h1>Add a Pet of this Species</h1>
+      <h3>Add a Pet of this Species</h3>
       <form onSubmit={handleSubmit} >
         <label>
           Name:

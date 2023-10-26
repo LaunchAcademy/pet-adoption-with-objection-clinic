@@ -23,6 +23,7 @@ const SpeciesShow = (props) => {
         throw error
       }
       const body = await response.json()
+      console.log(body.species)
       setSpecies(body.species)
     } catch (err) {
       console.error(`Error in fetch: ${err.message}`)
@@ -53,8 +54,11 @@ const SpeciesShow = (props) => {
           throw error
         }
       } else {
-        // handle successful post
-   
+        const responseBody = await response.json()
+        // debugger
+        // const updatedPets = species.pets.concat(responseBody.pet)
+        // setErrors([])
+        // setSpecies({ ...species, pets: updatedPets })
       }
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
@@ -67,7 +71,8 @@ const SpeciesShow = (props) => {
 
   return (
     <div>
-      <h1>{species.name}</h1>
+      <h1>The Name of this Species is...</h1>
+      <h2>{species.name}</h2>
         <NewPetForm postPet={postPet} />
       <h4>Pets:</h4>
       {petTiles}
