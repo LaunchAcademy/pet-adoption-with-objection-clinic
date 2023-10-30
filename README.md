@@ -7,6 +7,7 @@ Goals:
 - See all Pets for a Species on the show page for that Species
 - Add a new Pet to a specific Species
 - Add serializers for Species and Pets
+- Pet all the pets
 
 After adding any new section of code/ new method/ etc, how can we test that it works as intended before moving on?
 
