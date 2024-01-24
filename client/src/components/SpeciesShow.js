@@ -10,6 +10,7 @@ const SpeciesShow = (props) => {
     name: "",
     pets: []
   })
+
   const [errors, setErrors] = useState([])
 
   const speciesId = props.match.params.id
@@ -53,8 +54,12 @@ const SpeciesShow = (props) => {
           throw error
         }
       } else {
-        // handle successful post
-   
+        const newPetData = await response.json()
+        console.log(newPetData)
+        const newState = {...species, pets: [...species.pets, newPetData.pet]}
+        console.log(newState)
+        setSpecies(newState)
+
       }
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
@@ -68,10 +73,10 @@ const SpeciesShow = (props) => {
   return (
     <div>
       <h1>{species.name}</h1>
-        <NewPetForm postPet={postPet} />
+      <ErrorList errors={errors} />
+      <NewPetForm postPet={postPet} />
       <h4>Pets:</h4>
       {petTiles}
-      <ErrorList errors={errors} />
     </div>
   )
 }

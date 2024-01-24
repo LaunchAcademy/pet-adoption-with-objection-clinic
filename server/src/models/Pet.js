@@ -12,7 +12,9 @@ class Pet extends Model {
       required: ["name", "available"],
       properties: {
         name: { type: "string "},
-        available: { type: ["boolean", "string"]}
+        available: { type: ["boolean", "string"]},
+        estimatedAge: { type: ["integer", "string"]},
+        weight: { type: ["integer", "string"]}
       }
     }
   }
