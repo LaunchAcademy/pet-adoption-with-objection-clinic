@@ -2,6 +2,8 @@ import express from "express"
 
 import Species from "../../../models/Species.js"
 
+import SpeciesSerializer from "../../../serializers/SpeciesSerialier.js"
+
 import petSpeciesRouter from "./petSpeciesRouter.js"
 
 const speciesRouter = new express.Router()
@@ -11,9 +13,11 @@ speciesRouter.use("/:speciesId/pets", petSpeciesRouter)
 speciesRouter.get("/", async (req, res) => {
   try {
     const allSpecies = await Species.query()
-    return res.status(200).json({ species: allSpecies })
+    const allSerializedSpecies = SpeciesSerializer.getSummaryForAllSpecies(allSpecies)
+
+    return res.status(200).json({ species: allSerializedSpecies })
   } catch (err) {
-    console.error(err);
+    console.error(err)
     return res.status(500).json({ errors: err })
   }
 })
@@ -24,11 +28,15 @@ speciesRouter.get("/:id", async (req, res) => {
   try {
     const theSpecies = await Species.query().findById(speciesId)
 
-    theSpecies.pets = await theSpecies.$relatedQuery("pets")
+    const serializedSpecies = await SpeciesSerializer.getDetailsForSpecies(theSpecies)
+    // console.log(serializedSpecies)
 
-    console.log(theSpecies)
+    // serializedSpecies.pets = await theSpecies.$relatedQuery("pets")
 
-    return res.status(200).json({ species: theSpecies })
+    // console.log(serializedSpecies)
+    // console.log(theSpecies)
+
+    return res.status(200).json({ species: serializedSpecies })
   } catch (err) {
     console.error(err)
     return res.status(500).json({ errors: err })

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 
-const PetShow = props => {
+const PetShow = (props) => {
   const [pet, setPet] = useState({
     name: "",
     available: "",
@@ -16,11 +16,11 @@ const PetShow = props => {
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`
         const error = new Error(errorMessage)
-        throw(error)
+        throw error
       }
       const body = await response.json()
       setPet(body.pet)
-    } catch(err) {
+    } catch (err) {
       console.error(`Error in fetch: ${err.message}`)
     }
   }
@@ -29,26 +29,29 @@ const PetShow = props => {
     getPet()
   }, [])
 
-  const applicantListItems = pet.applicants.map(applicantObject => {
-    return(
-      <li>{applicantObject.firstName} {applicantObject.lastName}</li>
-    )
-  })
+  // const applicantListItems = pet.applicants.map(applicantObject => {
+  //   return(
+  //     <li>{applicantObject.firstName} {applicantObject.lastName}</li>
+  //   )
+  // })
 
   let availabilitySection, weightSection, estimatedAgeSection
-  if(pet.available) {
+  if (pet.available) {
     availabilitySection = <p>This pet is available!</p>
   } else {
     availabilitySection = <p>This pet has already been adopted.</p>
   }
-  if(pet.weight) {
+  if (pet.weight) {
     weightSection = <p>Weight: {pet.weight} lbs</p>
   }
-  if(pet.estimatedAge) {
+  if (pet.estimatedAge) {
     estimatedAgeSection = <p>Estimated Age: {pet.estimatedAge}</p>
   }
 
-  return(
+  // <ul>
+  //   {applicantListItems}
+  // </ul>
+  return (
     <div>
       <h1>{pet.name}</h1>
       {availabilitySection}
@@ -56,9 +59,6 @@ const PetShow = props => {
       {estimatedAgeSection}
       <hr />
       <h4>Applicants:</h4>
-      <ul>
-        {applicantListItems}
-      </ul>
     </div>
   )
 }
